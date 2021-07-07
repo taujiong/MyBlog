@@ -1,7 +1,6 @@
 module.exports = {
-  base: '/blog/',
   title: "taujiong's blog",
-  description: 'Do one thing and do it well',
+  description: 'search, solve, record, review',
   locales: {
     '/': {
       lang: 'zh-CN',
@@ -42,21 +41,6 @@ module.exports = {
         tip: {
           content: '复制成功!',
         },
-      },
-    ],
-    [
-      'autometa',
-      {
-        author: {
-          name: 'taujiong',
-        },
-        canonical_base: 'https://j3space.xyz',
-      },
-    ],
-    [
-      'sitemap',
-      {
-        hostname: 'https://j3space.xyz',
       },
     ],
   ],

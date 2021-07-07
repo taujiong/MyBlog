@@ -6,11 +6,13 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs"
+    "dev": "vuepress dev",
+    "build": "vuepress build",
+    "deploy": "cloudbase framework deploy"
   },
   "devDependencies": {
     "vuepress": "^1.8.2",
+    "vuepress-plugin-nuggets-style-copy": "^1.0.3",
     "vuepress-theme-reco": "^1.6.6"
   }
 }
