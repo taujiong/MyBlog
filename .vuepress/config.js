@@ -23,7 +23,7 @@ module.exports = {
     logo: '/logo.jpg',
     authorAvatar: '/logo.jpg',
     nav: [
-      { text: '时间轴', link: '/timeline/', icon: 'reco-date' },
+      { text: '归档', link: '/timeline/', icon: 'reco-date' },
       {
         text: 'GitHub',
         link: 'https://github.com/taujiong',

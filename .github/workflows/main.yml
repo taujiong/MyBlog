@@ -1,0 +1,15 @@
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: deploy to tencent cloudbase
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: deploy
+        uses: TencentCloudBase/cloudbase-action@v2
+        with:
+          secretId: ${{secrets.secretId}}
+          secretKey: ${{secrets.secretKey}}
+          envId: ${{secrets.envId}}
