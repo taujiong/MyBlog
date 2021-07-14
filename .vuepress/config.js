@@ -32,6 +32,8 @@ module.exports = {
     ],
     author: 'taujiong',
     startYear: '2017',
+    record: '苏ICP备19016368号-4',
+    recordLink: 'https://beian.miit.gov.cn',
   },
   plugins: [
     [
