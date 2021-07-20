@@ -1,6 +1,6 @@
 ---
 title: 常用 Linux 命令的基本使用
-date: 2021-07-19
+date: 2021-07-18
 categories:
   - 工具
 tags:

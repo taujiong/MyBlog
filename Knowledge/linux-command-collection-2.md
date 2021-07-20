@@ -1,6 +1,6 @@
 ---
 title: Linux 远程管理常用命令
-date: 2021-07-19
+date: 2021-07-18
 categories:
   - 工具
 tags:
