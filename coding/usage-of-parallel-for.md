@@ -57,7 +57,7 @@ public class testParallel : MonoBehaviour
 
 在 unity 中运行该代码，其结果如下图所示
 
-![两种for循环的对比](https://i.loli.net/2020/01/08/YfAhZG5C8xbEKkD.png)
+![两种 for 的区别](./assets/normal-for-vs-parallel-for.png)
 
 可以发现，Parallel.For 相较于传统的 for 循环运行时间加快了 1s。而在本次项目中，在使用了 Parallel.For 的情况下，fps 直接达到了 23，这是一个相当大的提升了。
 
@@ -118,7 +118,7 @@ public class testParallel : MonoBehaviour
 
 在 unity 中运行该代码，其结果如下图所示
 
-![加了锁的Parallel.For与传统for的比较](https://i.loli.net/2020/01/08/9gRCnkubHrYd1j6.png)
+![加了锁的 Parallel.For 与传统 for 的比较](./assets/normal-for-vs-parallel-for-with-lock.png)
 
 可以发现，Parallel.For 的运行时间竟然是传统 for 循环运行时间的 100 倍！因此可以得出结论：**如果在循环中需要竞争资源，用到线程锁的话，Parallel.For 未必优于传统 for 循环**。
 
@@ -144,7 +144,7 @@ public class testParallel : MonoBehaviour
 
 在 unity 中运行该代码，其结果如下图所示
 
-![循环的无序性](https://i.loli.net/2020/01/08/ExWqDC4yR8PtIY6.png)
+![循环的无序性](./assets/unorder-of-parallel-for.png)
 
 因此可以得出结论：**如果循环的执行顺序需要严格控制的话，则不能使用 Parallel.For**。
 

@@ -23,11 +23,11 @@ tags:
 
 1. 在我刚打开 PyCharm 时，可以在 Windows 的任务管理器里面看到 PyCharm 共有两个子进程。
 
-   ![PyCharm 默认进程图](https://i.loli.net/2020/01/08/WOs3CKifb9vFxce.jpg)
+   ![PyCharm 默认进程图](./assets/initial-task-for-pycharm.jpg)
 
 2. 当我打开 PyCharm 的 Python Console 以进入 python 的交互模式时，可以看到 PyCharm 进程下又增加了三个子进程。
 
-   ![打开 Python Console 时进程图](https://i.loli.net/2020/01/08/TpG1P68aofY9Hsu.jpg)
+   ![打开 Python Console 时进程图](./assets/task-with-pycharm-console.jpg)
 
 3. 也就是说，在执行 subprocess.Popen 之前，PyCharm 中共有五个子进程，这是前提。接下来，我们在 PyCharm 中新建一个 test.py。
 
@@ -49,7 +49,7 @@ tags:
 
    在 time.sleep 的这十秒内，我们乘机再看一下任务管理器，可以发现 PyCharm 进程下面又多了一个 python 的子进程。
 
-   ![执行 Popen 命令时进程图](https://i.loli.net/2020/01/08/V8E7TopLNHmdSfR.jpg)
+   ![执行 Popen 命令时进程图](./assets/task-with-popen.jpg)
 
 5. 同理，我们再尝试一下 Git 的相关命令。
 
@@ -59,7 +59,7 @@ tags:
 
    再次查看任务管理器，可以发现 PyCharm 进程下面又多了五个 Git for Windows 子进程。在 clone 完成之后，在指定的位置就可以看到 PCI 仓库已经存在了，此时这五个子进程就会消失。
 
-   ![使用 Popen 执行 git clone 命令时进程图](https://i.loli.net/2020/01/08/6rC5JXMs3a1dYFP.jpg)
+   ![使用 Popen 执行 git clone 命令时进程图](./assets/task-with-popen-and-git-clone.jpg)
 
 通过上面的这个例子，我们知道：**subprocess.Popen 所做的事情就是调用系统的接口来创建我们指定的进程以完成预期的任务**
 
@@ -88,7 +88,7 @@ f = subprocess.Popen("test.bat")
 
 值得注意的一点是，前两种方式的输出形式与第三种是有一点不同的。
 
-![args 方法效果图](https://i.loli.net/2020/01/08/nT7e1huGJMEqtZD.jpg)
+![args 方法效果图](./assets/result-with-args.jpg)
 
 ### shell
 
@@ -104,7 +104,7 @@ f = subprocess.Popen("test.bat")
 
 1. 老规矩，这是什么都没干之前，PyCharm 进程下面的子进程。（因为中间重启了电脑，所以启动 PyCharm 时进程发生了变化）
 
-   ![初始进程图](https://i.loli.net/2020/01/08/1pSlvrRIoi7fHgE.jpg)
+   ![初始进程图](./assets/new-initial-task.jpg)
 
 2. 然后是不带 shell 参数时执行 Popen 函数。
 
@@ -115,7 +115,7 @@ f = subprocess.Popen("test.bat")
 
    此时，进程图如下：
 
-   ![不带 shell 时进程图](https://i.loli.net/2020/01/08/Vrc1FYKhaZteASC.jpg)
+   ![不带 shell 时进程图](./assets/task-without-shell.jpg)
 
 3. 最后是带 shell 参数时执行 Popen 函数。
 
@@ -125,7 +125,7 @@ f = subprocess.Popen("test.bat")
 
    此时，进程图如下：
 
-   ![带 shell 时进程图](https://i.loli.net/2020/01/08/DYuahyB4cd6qjSb.jpg)
+   ![带 shell 时进程图](./assets/task-with-shell.jpg)
 
 可以发现，加上 shell 参数，会额外增加一个 Windows 命令处理程序的进程，通过该进程来调用 Git 进程。也就是说，
 
