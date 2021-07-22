@@ -11,7 +11,7 @@ tags:
 
 最近在系统地学 PySide2（Qt for python 的官方绑定），在其官方教程中有一个[Data Visualization Tool Tutorial](https://doc.qt.io/qtforpython/tutorials/datavisualize/index.html)的数据可视化教程。在该教程中，用到了 pandas 库来读取一个本地 CSV 文件。教程本身提供的是相对路径读取文件方法，但本人想使用 qrc 资源文件的方式来引入该 CSV 文件，以培养习惯。不曾想，遇到了 pandas 无法读取 CSV 文件的错误，在解决过程中对 qrc 资源文件的运作方式有了更深的理解。
 
-<!--more-->
+<!-- more -->
 
 ## 问题重现
 
