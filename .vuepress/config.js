@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/blog',
+  base: '/blog/',
   title: "taujiong's blog",
   description: 'search, solve, record, review',
   locales: {
