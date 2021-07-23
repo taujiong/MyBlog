@@ -13,9 +13,29 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - name: deploy
-        uses: TencentCloudBase/cloudbase-action@v2
+
+      - name: setup node env
+        uses: actions/setup-node@v2
         with:
-          secretId: ${{secrets.secretId}}
-          secretKey: ${{secrets.secretKey}}
-          envId: ${{secrets.envId}}
+          node-version: '14.x'
+          cache: 'yarn'
+
+      - name: build blog
+        run: |
+          yarn --frozen-lockfile
+          yarn build
+
+      - name: setup tcb
+        env:
+          apiKeyId: ${{ secrets.secretId }}
+          apiKey: ${{ secrets.secretKey }}
+        run: |
+          yarn global add @cloudbase/cli --loglevel=error
+          tcb login --apiKeyId $apiKeyId --apiKey $apiKey
+
+      - name: cleanup and redeploy
+        env:
+          envId: ${{ secrets.envId }}
+        run: |
+          tcb hosting delete blog --dir -e $envId
+          tcb hosting deploy .vuepress/dist /blog -e $envId

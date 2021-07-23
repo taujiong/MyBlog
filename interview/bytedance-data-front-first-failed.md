@@ -28,6 +28,8 @@ tags:
 
 - new Object 和 {} 的区别是什么？
 - 模块化方案有哪些，区别是什么？
+- 数组的 map，reduce 和 filter 的作用分别是什么？
+- 防抖是什么？
 - 手写 instanceof 的实现
 - Promise 链的理解 + 根据代码判断输出
 - Proxy 可以用来干什么？
