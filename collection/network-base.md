@@ -5,7 +5,6 @@ categories:
   - 面试
 tags:
   - network
-publish: false
 ---
 
 计算机网络面试八股文，结合自己的理解进行语言组织
