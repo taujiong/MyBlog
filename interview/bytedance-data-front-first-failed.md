@@ -46,7 +46,13 @@ tags:
 ## javascript
 
 - new Object 和 {} 的区别是什么？
-- 模块化方案有哪些，区别是什么？
+- CommonJs 和 ES Module 的区别是什么？
+
+  - 语法不同。CommonJs 使用 exports 导出，require 导入；ES Module 使用 export 导出，import 导入
+  - 加载时机不同。CommonJs 是运行时加载，因此可以动态导入；ES Module 是编译时加载，只能通过确定的字符串形式指定模块，好处是可以做摇树优化
+  - 导出值的类型不同。CommonJs 导出的是值的拷贝，因此内部修改无法同步到外部；ES Module 导出的是值的引用，内部修改可以同步到外部
+  - this 的指向不同。CommonJs 中顶层的 this 指向这个模块本身，而 ES6 中顶层 this 指向 undefined
+
 - 数组的 map，reduce 和 filter 的作用分别是什么？
 
   - [map](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 接受一个函数以及一个可选的 thisArg，返回一个新的数组。作用是迭代数组中的元素调用传入的函数，将函数返回值 push 到新数组并最终返回新数组
