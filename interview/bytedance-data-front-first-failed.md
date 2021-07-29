@@ -17,15 +17,18 @@ tags:
 
 - 项目中权限管理是怎么做的？_（这一块面试的时候只提到了 RBAC，其实可以展开很多）_
 
-  - 底层是基于 OpenId 协议和 OAuth 2.0 协议实现的
   - 用户的认证过程是通过 jwt token 实现的：
 
     1. 不同的客户端通过不同的方式向身份认证服务器申请 access_token，前端一般使用的 authorization code 或者 implicit 方式
     2. 通过 axios 请求拦截器实现为每一个 api 请求添加 Authorization 请求头，值为上一步获取到的 token_type + access_token
     3. token 是自包含的，token 值解码出来之后会包含必要的认证信息，服务器读取进行认证
 
-  - 用户的授权是基于 RBAC 的：token 中包含了用户的角色信息，但是也支持基于策略去做
-  - TODO: 前端页面上的权限管理是怎样的
+  - 用户的授权是基于资源去做的：
+
+    1. 为几乎每一个 api 请求都设置了独立的权限，同时身份认证服务器提供了一个接口，可以根据用户的 token 返回它可以访问的所有权限
+    2. 前端页面的路由是通过 vue-router 实现的，在每一个路由上设置 meta 数据，添加上访问当前页面所需要的权限
+    3. 在构建页面左侧导航栏里面的列表元素的时候，会对比当前用户已有的权限和元素需要的权限，如果没有就不渲染
+    4. 同时添加全局的路由守卫防止用户直接通过网址访问
 
 - CI/CD 是怎么实现的？
 
@@ -46,7 +49,10 @@ tags:
 
 ## javascript
 
-- new Object 和 {} 的区别是什么？
+- `new Object()` 和 `{}` 创建对象的区别是什么？
+
+  说实话，没找到太有价值的回答，可能是我问题记错了。StackOverflow 上有一个[相关的回答](https://stackoverflow.com/questions/4597926/what-is-the-difference-between-new-object-and-object-literal-notation)，可以了解一下。
+
 - CommonJs 和 ES Module 的区别是什么？
 
   - 语法不同。CommonJs 使用 exports 导出，require 导入；ES Module 使用 export 导出，import 导入
@@ -61,7 +67,34 @@ tags:
   - [filter](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) 接受一个函数以及一个可选的 thisArg，返回一个新的数组。作用是迭代数组的每一个元素并调用传入的函数，将函数返回值为 true 的元素 push 到新数组并最终返回新数组
 
 - 防抖是什么？
+
+  单独抽离到了[这里](./debounce-and-throttle.md)
+
 - 手写 instanceof 的实现
+
+  - instanceof 的作用
+
+    1. 判断某个实例是否属于某构造函数
+    2. 在继承关系中用来判断一个实例是否属于它的父类型或者祖先类型的实例
+
+  - 换句话说，判断右边变量的 prototype 是不是在左边变量的**原型链**上
+
+  ```js
+  function instanceof(obj, classType) {
+    let classProto = classType.prototype;
+    obj = obj.__proto__;
+    while (true) {
+      if (obj === null) {
+        return false;
+      }
+      if (obj === classProto) {
+        return true;
+      }
+      obj = obj.__proto__;
+    }
+  }
+  ```
+
 - Promise 链的理解 + 根据代码判断输出
 - Proxy 可以用来干什么？
 
