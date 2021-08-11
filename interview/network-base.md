@@ -49,4 +49,7 @@ tags:
 
 ### 渲染页面
 
-TO BE CONTINUED...
+1. 构建 DOM 和 CSSOM，二者是同步进行的
+2. 结合 DOM 树 和 CSSOM 树，生成渲染树
+3. 生成 Layout 布局
+4. 绘制页面
