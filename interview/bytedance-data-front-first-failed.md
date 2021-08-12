@@ -126,7 +126,7 @@ tags:
 
 ## 算法
 
-最长递增子序列
+[Leetcode 300 最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
 
 ## 面试总体感受
 
