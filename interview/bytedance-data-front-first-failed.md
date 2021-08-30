@@ -95,7 +95,16 @@ tags:
   ```
 
 - Promise 链的理解 + 根据代码判断输出
+
+  - 每一个 promise 都会有 then 和 catch 方法
+  - 这些方法返回的还是一个 promise，then 还可以返回新的 promise 值
+  - 因此，对于初始的一个 promise，通过不断调用 then 和 catch 方法就形成 promise 的链式调用
+
 - Proxy 可以用来干什么？
+
+  - proxy 可以实现对被代理对象的 get，set，has，deleteProperty 等等很多方法的劫持，添加上自己的逻辑之后通过 Reflect Api 调用原功能
+  - 基于此，我们可以实现比如说日志，缓存，默认值等功能
+  - 我之前还尝试过通过 proxy 和 reflect 实现依赖注入
 
 ## Vue
 

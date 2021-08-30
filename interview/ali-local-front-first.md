@@ -85,9 +85,9 @@ tags:
   ```js
   // Does not work with `new (funcA.bind(thisArg, args))`
   if (!Function.prototype.bind)
-    (function() {
+    (function () {
       var slice = Array.prototype.slice;
-      Function.prototype.bind = function() {
+      Function.prototype.bind = function () {
         var thatFunc = this,
           thatArg = arguments[0];
         var args = slice.call(arguments, 1);
@@ -99,7 +99,7 @@ tags:
               'what is trying to be bound is not callable'
           );
         }
-        return function() {
+        return function () {
           var funcArgs = args.concat(slice.call(arguments));
           return thatFunc.apply(thatArg, funcArgs);
         };
@@ -111,7 +111,7 @@ tags:
 
 - vue3 和 vue2 的区别在哪里？
 
-  - 响应式原理的重写。vue2 响应式是基于 `Object.defineProperty` 实现的，存在较大的问题 **（1. 对数组等集合类型的支持不佳 2. 对嵌套属性的深层响应支持不佳）**；vue3 响应式是基于新的 API `proxy` 实现的，功能更加强大
+  - 响应式原理的重写。vue2 响应式是基于 `Object.defineProperty` 实现的，存在较大的问题 **（1. 对数组等集合类型的支持不佳 2. 对嵌套属性的深层响应支持不佳 3. 对新增属性的支持不佳）**；vue3 响应式是基于新的 API `proxy` 实现的，功能更加强大
   - 组合式 API 的引入，使 vue 可以写出更加解耦的代码
   - vue3 各模块之间更加解耦，响应式相关封装成了 reactivity 包，组合式 API 相关封装成了 composition-api 包，因此可以按需引入了
   - 对 typescript 的支持更好
