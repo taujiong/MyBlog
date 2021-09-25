@@ -25,6 +25,7 @@ module.exports = {
     authorAvatar: '/logo.jpg',
     nav: [
       { text: '归档', link: '/timeline/', icon: 'reco-date' },
+      { text: 'Atomic', link: '/categories/Atomic/', icon: 'reco-document' },
       {
         text: 'GitHub',
         link: 'https://github.com/taujiong',
