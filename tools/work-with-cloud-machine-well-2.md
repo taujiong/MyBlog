@@ -24,7 +24,7 @@ tags:
 通常来说，我们通过 ssh 登录到服务器之后显示的那个命令提示行窗口所使用的 [shell](https://baike.baidu.com/item/shell/99702) 是 bash，我经常使用的 shell 是 zsh。二者在语言上的差异很小，只不过 zsh 具有更加良好的可扩展性，因而受到大家的青睐。
 
 ```bash
-> cat $SHELL # 查看当前使用的 shell
+> echo $SHELL # 查看当前使用的 shell
 /bin/bash
 
 > cat /etc/shells # 查看当前支持的 shell
@@ -58,7 +58,7 @@ zsh 支持的插件挺多的，但是最常用的主要有以下几个：
   该插件主要用于历史命令的自动提示与快速补全。对于你已经使用过的命令，他会在你下次输入该命令的一部分（必须从头开始匹配）时将后续命令以提示的方式显示出来，此时按下方向键右键即可快速补全。
 
   ```bash
-  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+  git clone --depth 1 -- https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
   ```
 
 - zsh-autocomplete
@@ -106,7 +106,7 @@ sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/
 sudo chmod +x /usr/local/bin/oh-my-posh
 ```
 
-安装完成之后，你可以直接将我现在使用的[配置文件](https://gitee.com/taujiong/mac-dotfiles/blob/master/backups/Powerlevel10k.omp.json)拷贝到服务器的任意位置，这里怎么拷贝就八仙过海，各显神通了。命令流使用 `scp`，工具流使用 putty，GUI 流使用 vscode。这里假设我把配置文件拷贝到了 `~/.zsh/Powerlevel10k.omp.json`。
+安装完成之后，你可以直接将我现在使用的[配置文件](https://gitee.com/taujiong/mac-dotfiles/blob/master/config/shared/Powerlevel10k.omp.json)拷贝到服务器的任意位置，这里怎么拷贝就八仙过海，各显神通了。命令流使用 `scp`，工具流使用 putty，GUI 流使用 vscode。这里假设我把配置文件拷贝到了 `~/.zsh/Powerlevel10k.omp.json`。
 
 下一步，就是在 `.zshrc` 中启用 oh-my-posh 并配置指定的样式文件了。
 
@@ -124,7 +124,45 @@ eval "$(oh-my-posh --init --shell zsh --config ~/.zsh/Powerlevel10k.omp.json)"
 
 关于常用软件，主要介绍两款，一款是用于构建大局域网的 zerotier-one，这个主要是方便我们组内的电脑相互之间的快捷连接；另一款是用于构建和部署其他应用的 Docker，这个主要是为了实现我们的服务器的可移植性，关于这一点，后面应该会有文章专门介绍，这里就不展开了。
 
-偷个懒吧，这两款软件不想介绍了，关于怎么用大家去网上自行查阅吧，反正我也是这么过来的。
+偷个懒吧，这两款软件不想介绍了，关于怎么用大家去网上自行查阅吧，反正我也是这么过来的，这里只贴安装命令用于日常检索。
+
+### zerotier-one
+
+[官方下载网址](https://www.zerotier.com/download/)
+
+```bash
+# 安装
+curl -s 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import && \
+if z=$(curl -s 'https://install.zerotier.com/' | gpg); then echo "$z" | sudo bash; fi
+
+# 加入网络
+sudo zerotier-cli join ${network id}
+```
+
+### docker
+
+[docker 官方下载网址](https://docs.docker.com/engine/install/)
+
+```bash
+# 安装
+curl -fsSL https://get.docker.com | sudo bash
+
+# 检测安装状态
+sudo docker version
+```
+
+[docker compose 官方下载网址](https://docs.docker.com/compose/install/)
+
+```bash
+# 安装
+ sudo curl -L "https://github.com/docker/compose/releases/download/latest/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+# 赋予执行权限
+sudo chmod +x /usr/local/bin/docker-compose
+
+# 检测安装状态
+sudo docker-compose --version
+```
 
 ## 总结
 
